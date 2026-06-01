@@ -63,3 +63,31 @@ Strong success criteria let you loop independently. Weak criteria ("make it work
 ---
 
 **These guidelines are working if:** fewer unnecessary changes in diffs, fewer rewrites due to overcomplication, and clarifying questions come before implementation rather than after mistakes.
+
+# AI 编程心法约束
+
+写代码时严格遵循以下 4 条：
+
+## 1. YAGNI(用不到不要做)
+- 用最简单的实现满足当前需求
+- 不要为未来可能的扩展提前设计抽象层
+- 不留 TODO/未来扩展位
+- 1 种实现就别造工厂模式
+
+## 2. KISS(保持简单)
+- 能用普通函数解决的，不要用类
+- 能用 if-else 解决的，不要用 Strategy 模式
+- 优先可读性，不优先"看起来专业"
+- 5 行能写完的，不要用 50 行
+
+## 3. 命名是设计
+- 变量名/函数名要精确说明它装的是什么/做什么
+- 不要用 data / temp / helper / util / manager 这种通用名
+- 函数名里不要用 do / process / handle 这种空动词
+- 如果需要注释解释命名，先改名字
+
+## 4. Fail Fast(快速失败)
+- 不要 catch 你不知道怎么处理的异常
+- 在数据边界(API 输入、DB 输出)校验输入，出错立即抛具体异常
+- 报错信息要包含"是什么值导致的"
+- 绝不允许 silent fail / try： ... except： pass
